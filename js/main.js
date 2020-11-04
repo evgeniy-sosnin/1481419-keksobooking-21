@@ -2,7 +2,7 @@
 
 // Task 1
 
-var makeAdsArray = function() {
+var makeAdsArray = function () {
   var ARRAY_SIZE = 8;
   var AD_TYPES = ['palace', 'flat', 'house', 'bungalow'];
   var AD_CHECKINS = ['12:00', '13:00', '14:00'];
@@ -12,7 +12,7 @@ var makeAdsArray = function() {
 
   var adsArray = [];
 
-  for(var i = 0; i < ARRAY_SIZE; i++) {
+  for (var i = 0; i < ARRAY_SIZE; i++) {
     adsArray[i] = {
       author: {
         avatar: 'img/avatars/user0' + (i + 1) + '.png'
@@ -38,28 +38,28 @@ var makeAdsArray = function() {
   }
 
   return adsArray;
-}
+};
 
-var getRandomNumber = function(min, max) {
+var getRandomNumber = function (min, max) {
   var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   return randomNumber;
-}
+};
 
-var getRandomItem = function(arr) {
+var getRandomItem = function (arr) {
   var randomItem = Math.floor(Math.random() * arr.length);
   return arr[randomItem];
-}
+};
 
-var makeRandomArrayFrom = function(arr) {
+var makeRandomArrayFrom = function (arr) {
   var newArray = [];
   var newArraySize = getRandomNumber(1, arr.length);
 
-  for(var i = 0; i < newArraySize; i++) {
+  for (var i = 0; i < newArraySize; i++) {
     newArray[i] = arr[i];
   }
 
   return newArray;
-}
+};
 
 // Task 2
 
@@ -69,7 +69,6 @@ map.classList.remove('map--faded');
 // Task 3
 
 var ads = makeAdsArray();
-console.log(ads);
 
 var PIN_SIZE = {
   width: 64,
@@ -78,7 +77,7 @@ var PIN_SIZE = {
 
 var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
 
-var renderPin = function(pin) {
+var renderPin = function (pin) {
   var pinElement = pinTemplate.cloneNode(true);
 
   pinElement.style = 'left: ' + (pin.location.x - PIN_SIZE.width / 2) + 'px; top: ' + (pin.location.y + PIN_SIZE.height) + 'px;';
@@ -88,14 +87,14 @@ var renderPin = function(pin) {
   pinImage.alt = pin.offer.title;
 
   return pinElement;
-}
+};
 
 // Task 4
 
 var pinsList = document.querySelector('.map__pins');
 
 var fragment = document.createDocumentFragment();
-for(var i = 0; i < ads.length; i++) {
+for (var i = 0; i < ads.length; i++) {
   fragment.appendChild(renderPin(ads[i]));
 }
 
