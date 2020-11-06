@@ -141,21 +141,21 @@ var renderCard = function () {
   cardTime.textContent = 'Заезд после ' + ads[0].offer.checkin + ', выезд до ' + ads[0].offer.checkin;
 
   cardFeatures.innerHTML = '';
-  for (var i = 0; i < ads[0].offer.features.length; i++) {
-    cardFeatures.innerHTML += '<li>' + ads[0].offer.features[i] + '</li>';
+  for (var featureSingle of ads[0].offer.features) {
+    cardFeatures.innerHTML += '<li>' + featureSingle + '</li>';
   }
 
   cardDescription.textContent = ads[0].offer.description;
 
   cardPhotos.innerHTML = '';
-  for (var i = 0; i < ads[0].offer.photos.length; i++) {
-    cardPhotos.innerHTML += '<img src="' + ads[0].offer.photos[i] + '" class="popup__photo" width="45" height="40" alt="Фотография жилья">';
+  for (var photoSingle of ads[0].offer.photos) {
+    cardPhotos.innerHTML += '<img src="' + photoSingle + '" class="popup__photo" width="45" height="40" alt="Фотография жилья">';
   }
 
   cardAvatar.src = ads[0].author.avatar;
 
   return cardElement;
-}
+};
 
 // Task 8.3
 
@@ -163,5 +163,3 @@ var mapCard = renderCard();
 var mapFilters = map.querySelector('.map__filters-container');
 
 map.insertBefore(mapCard, mapFilters);
-
-
