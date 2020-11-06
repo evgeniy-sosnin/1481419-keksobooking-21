@@ -1,6 +1,6 @@
 'use strict';
 
-// Task 1
+// Task 7.1
 
 var makeAdsArray = function () {
   var ARRAY_SIZE = 8;
@@ -61,12 +61,12 @@ var makeRandomArrayFrom = function (arr) {
   return newArray;
 };
 
-// Task 2
+// Task 7.2
 
 var map = document.querySelector('.map');
 map.classList.remove('map--faded');
 
-// Task 3
+// Task 7.3
 
 var ads = makeAdsArray();
 
@@ -89,7 +89,7 @@ var renderPin = function (pin) {
   return pinElement;
 };
 
-// Task 4
+// Task 7.4
 
 var pinsList = document.querySelector('.map__pins');
 
@@ -99,3 +99,69 @@ for (var i = 0; i < ads.length; i++) {
 }
 
 pinsList.appendChild(fragment);
+
+// Task 8.2
+
+var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
+
+var renderCard = function () {
+  var cardElement = cardTemplate.cloneNode(true);
+
+  var cardTitle = cardElement.querySelector('.popup__title');
+  var cardAddress = cardElement.querySelector('.popup__text--address');
+  var cardPrice = cardElement.querySelector('.popup__text--price');
+  var cardType = cardElement.querySelector('.popup__type');
+  var cardCapacity = cardElement.querySelector('.popup__text--capacity');
+  var cardTime = cardElement.querySelector('.popup__text--time');
+  var cardFeatures = cardElement.querySelector('.popup__features');
+  var cardDescription = cardElement.querySelector('.popup__description');
+  var cardPhotos = cardElement.querySelector('.popup__photos');
+  var cardAvatar = cardElement.querySelector('.popup__avatar');
+
+  cardTitle.textContent = ads[0].offer.title;
+  cardAddress.textContent = ads[0].offer.address;
+  cardPrice.textContent = ads[0].offer.price + '₽/ночь';
+
+  switch (ads[0].offer.type) {
+    case 'flat':
+      cardType.textContent = 'Квартира';
+      break;
+    case 'bungalow':
+      cardType.textContent = 'Бунгало';
+      break;
+    case 'house':
+      cardType.textContent = 'Дом';
+      break;
+    case 'palace':
+      cardType.textContent = 'Дворец';
+      break;
+  }
+
+  cardCapacity.textContent = ads[0].offer.rooms + ' комнаты для ' + ads[0].offer.guests + ' гостей';
+  cardTime.textContent = 'Заезд после ' + ads[0].offer.checkin + ', выезд до ' + ads[0].offer.checkin;
+
+  cardFeatures.innerHTML = '';
+  for (var i = 0; i < ads[0].offer.features.length; i++) {
+    cardFeatures.innerHTML += '<li>' + ads[0].offer.features[i] + '</li>';
+  }
+
+  cardDescription.textContent = ads[0].offer.description;
+
+  cardPhotos.innerHTML = '';
+  for (var i = 0; i < ads[0].offer.photos.length; i++) {
+    cardPhotos.innerHTML += '<img src="' + ads[0].offer.photos[i] + '" class="popup__photo" width="45" height="40" alt="Фотография жилья">';
+  }
+
+  cardAvatar.src = ads[0].author.avatar;
+
+  return cardElement;
+}
+
+// Task 8.3
+
+var mapCard = renderCard();
+var mapFilters = map.querySelector('.map__filters-container');
+
+map.insertBefore(mapCard, mapFilters);
+
+
