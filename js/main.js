@@ -97,7 +97,7 @@ pinsList.appendChild(fragment);
 
 // Task 8.2
 
-var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
+// var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
 
 // var renderCard = function () {
 //   var cardElement = cardTemplate.cloneNode(true);
@@ -154,11 +154,11 @@ var cardTemplate = document.querySelector('#card').content.querySelector('.map__
 
 var map = document.querySelector('.map');
 
-//var mapCard = renderCard();
+// var mapCard = renderCard();
 var mapFilters = map.querySelector('.map__filters-container');
 var mapFiltersForm = mapFilters.querySelector('.map__filters');
 
-//map.insertBefore(mapCard, mapFilters);
+// map.insertBefore(mapCard, mapFilters);
 
 // Task 10
 
@@ -183,7 +183,7 @@ var setPageInactive = function () {
   }
 
   isPageActive = false;
-}
+};
 
 var setPageActive = function () {
   map.classList.remove('map--faded');
@@ -199,7 +199,7 @@ var setPageActive = function () {
   }
 
   isPageActive = true;
-}
+};
 
 var mapPinMain = map.querySelector('.map__pin--main');
 
@@ -210,11 +210,11 @@ var setAddressInputValue = function () {
   var addressY = mapPinMain.style.top.replace('px', '');
 
   if (!isPageActive) {
-    addressInput.value =  (+addressX + PIN_SIZE.width / 2) + ', ' + (+addressY + PIN_SIZE.width / 2);
+    addressInput.value = (+addressX + PIN_SIZE.width / 2) + ', ' + (+addressY + PIN_SIZE.width / 2);
   } else {
-    addressInput.value =  (+addressX + PIN_SIZE.width / 2) + ', ' + (+addressY + PIN_SIZE.height);
+    addressInput.value = (+addressX + PIN_SIZE.width / 2) + ', ' + (+addressY + PIN_SIZE.height);
   }
-}
+};
 
 mapPinMain.addEventListener('mousedown', function (evt) {
   if (evt.button === 0) {
@@ -236,7 +236,6 @@ setAddressInputValue();
 // Валидация полей количества гостей с количеством комнат
 
 var roomNumberSelect = adForm.querySelector('#room_number');
-var capacitySelect = adForm.querySelector('#capacity');
 
 var setCapacityOptions = function (roomNumber) {
   var capacitySelectOptions = adForm.querySelectorAll('#capacity option');
@@ -245,7 +244,7 @@ var setCapacityOptions = function (roomNumber) {
     for (var capacitySelectOption of capacitySelectOptions) {
       capacitySelectOption.disabled = false;
     }
-  }
+  };
 
   if (roomNumber) {
     if (roomNumber === '1') {
@@ -276,7 +275,7 @@ var setCapacityOptions = function (roomNumber) {
   } else {
     setCapacityOptions(roomNumberSelect.value);
   }
-}
+};
 
 setCapacityOptions();
 
