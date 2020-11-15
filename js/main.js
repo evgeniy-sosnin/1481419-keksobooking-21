@@ -93,8 +93,6 @@ for (var i = 0; i < ads.length; i++) {
   fragment.appendChild(renderPin(ads[i]));
 }
 
-pinsList.appendChild(fragment);
-
 // Task 8.2
 
 // var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
@@ -198,6 +196,8 @@ var setPageActive = function () {
     filter.disabled = false;
   }
 
+  pinsList.appendChild(fragment);
+
   isPageActive = true;
 };
 
@@ -249,25 +249,25 @@ var setCapacityOptions = function (roomNumber) {
   if (roomNumber) {
     if (roomNumber === '1') {
       resetCapacityOptions();
-      capacitySelectOptions[2].selected = true;
+      // capacitySelectOptions[2].selected = true;
       capacitySelectOptions[0].disabled = true;
       capacitySelectOptions[1].disabled = true;
       capacitySelectOptions[3].disabled = true;
     } else if (roomNumber === '2') {
       resetCapacityOptions();
-      capacitySelectOptions[1].selected = true;
+      // capacitySelectOptions[1].selected = true;
       capacitySelectOptions[2].disabled = false;
       capacitySelectOptions[0].disabled = true;
       capacitySelectOptions[3].disabled = true;
     } else if (roomNumber === '3') {
       resetCapacityOptions();
-      capacitySelectOptions[0].selected = true;
+      // capacitySelectOptions[0].selected = true;
       capacitySelectOptions[1].disabled = false;
       capacitySelectOptions[2].disabled = false;
       capacitySelectOptions[3].disabled = true;
     } else if (roomNumber === '100') {
       resetCapacityOptions();
-      capacitySelectOptions[3].selected = true;
+      // capacitySelectOptions[3].selected = true;
       capacitySelectOptions[1].disabled = true;
       capacitySelectOptions[2].disabled = true;
       capacitySelectOptions[0].disabled = true;
