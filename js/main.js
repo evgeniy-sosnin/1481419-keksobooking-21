@@ -191,7 +191,7 @@ var setPageActive = function () {
 
   pinsList.appendChild(fragment);
 
-  addPinsClickHandler();
+  addPinsClickAndEnterHandler();
 
   isPageActive = true;
 };
@@ -305,17 +305,24 @@ var closeMapCardPopup = function () {
     }
 };
 
-var addPinsClickHandler = function () {
+var addPinsClickAndEnterHandler = function () {
   var mapPins = map.querySelectorAll('.map__pin');
   for (var i = 0; i < mapPins.length; i++) {
     if (!mapPins[i].classList.contains('map__pin--main')) {
+      var targetElement;
       mapPins[i].addEventListener('click', function (evt) {
+        if (evt.target.tagName === 'BUTTON') {
+          targetElement = evt.target.querySelector('img');
+        } else {
+          targetElement = evt.target;
+        }
+
         var mapCard = map.querySelector('.map__card');
         if (mapCard) {
           map.removeChild(mapCard);
-          openMapCardPopup(evt.target);
+          openMapCardPopup(targetElement);
         } else {
-          openMapCardPopup(evt.target);
+          openMapCardPopup(targetElement);
         }
       });
     }
