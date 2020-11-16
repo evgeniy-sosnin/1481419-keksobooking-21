@@ -301,7 +301,7 @@ var setMinPrice = function (placeTypeValue) {
       minPrice = 10000;
       break;
   }
-}
+};
 
 placeType.addEventListener('change', function (evt) {
   pricePerNight.value = '';
@@ -314,7 +314,7 @@ pricePerNight.addEventListener('input', function () {
   } else if (pricePerNight.value > maxPrice) {
     pricePerNight.setCustomValidity('Максимальная цена за ночь ' + maxPrice + ' руб.');
   } else {
-    userNameInput.setCustomValidity('');
+    pricePerNight.setCustomValidity('');
   }
 
   pricePerNight.reportValidity();
@@ -334,7 +334,7 @@ var setTimeIn = function (timeOutValue) {
       option.selected = true;
     }
   }
-}
+};
 
 var setTimeOut = function (timeInValue) {
   for (var option of timeOutOptions) {
@@ -355,9 +355,9 @@ timeOut.addEventListener('change', function (evt) {
 // Открыть и закрыть карточку объявления
 
 var openMapCardPopup = function (targetPin) {
-  for (var i = 0; i < ads.length; i++) {
-    if (targetPin.src.includes(ads[i].author.avatar)) {
-      var mapCard = renderCard(ads[i]);
+  for (var ad of ads) {
+    if (targetPin.src.includes(ad.author.avatar)) {
+      var mapCard = renderCard(ad);
       var mapCardClose = mapCard.querySelector('.popup__close');
       map.insertBefore(mapCard, mapFilters);
 
@@ -376,15 +376,15 @@ var closeMapCardPopup = function () {
     map.removeChild(mapCard);
 
     document.removeEventListener('keydown', onMapCardPopupEscapePress);
-    }
+  }
 };
 
 var addPinsClickAndEnterHandler = function () {
   var mapPins = map.querySelectorAll('.map__pin');
-  for (var i = 0; i < mapPins.length; i++) {
-    if (!mapPins[i].classList.contains('map__pin--main')) {
+  for (var pin of mapPins) {
+    if (!pin.classList.contains('map__pin--main')) {
       var targetElement;
-      mapPins[i].addEventListener('click', function (evt) {
+      pin.addEventListener('click', function (evt) {
         if (evt.target.tagName === 'BUTTON') {
           targetElement = evt.target.querySelector('img');
         } else {
@@ -407,4 +407,4 @@ var onMapCardPopupEscapePress = function (evt) {
   if (evt.key === 'Escape') {
     closeMapCardPopup();
   }
-}
+};
