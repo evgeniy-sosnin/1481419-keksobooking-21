@@ -342,7 +342,7 @@ var setTimeOut = function (timeInValue) {
       option.selected = true;
     }
   }
-}
+};
 
 timeIn.addEventListener('change', function (evt) {
   setTimeOut(evt.target.value);
