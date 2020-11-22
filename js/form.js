@@ -7,10 +7,10 @@
 
   // Валидация полей «Количество комнат» и «Количество мест»
 
-  var roomNumberSelect = adForm.querySelector('#room_number');
+  var roomNumberSelect = window.adForm.querySelector('#room_number');
 
   var setCapacityOptions = function (roomNumber) {
-    var capacitySelectOptions = adForm.querySelectorAll('#capacity option');
+    var capacitySelectOptions = window.adForm.querySelectorAll('#capacity option');
 
     var resetCapacityOptions = function () {
       for (var capacitySelectOption of capacitySelectOptions) {
@@ -57,8 +57,8 @@
 
   // Валидация полей «Тип жилья» и «Цена за ночь»
 
-  var placeType = adForm.querySelector('#type');
-  var pricePerNight = adForm.querySelector('#price');
+  var placeType = window.adForm.querySelector('#type');
+  var pricePerNight = window.adForm.querySelector('#price');
 
   var minPrice;
   var maxPrice = 1000000;
@@ -99,11 +99,11 @@
 
   // Валидация полей «Время заезда и выезда»
 
-  var timeIn = adForm.querySelector('#timein');
-  var timeInOptions = adForm.querySelectorAll('#timein option');
+  var timeIn = window.adForm.querySelector('#timein');
+  var timeInOptions = window.adForm.querySelectorAll('#timein option');
 
-  var timeOut = adForm.querySelector('#timeout');
-  var timeOutOptions = adForm.querySelectorAll('#timeout option');
+  var timeOut = window.adForm.querySelector('#timeout');
+  var timeOutOptions = window.adForm.querySelectorAll('#timeout option');
 
   var setTimeIn = function (timeOutValue) {
     for (var option of timeInOptions) {
