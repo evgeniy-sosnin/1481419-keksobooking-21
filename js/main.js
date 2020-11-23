@@ -1,4 +1,4 @@
 'use strict';
 
-window.setPageInactive();
+window.setup.setPageInactive();
 window.setAddressInputValue();

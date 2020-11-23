@@ -3,7 +3,40 @@
 // Модуль работы с формой
 
 (function () {
-  window.adForm = document.querySelector('.ad-form');
+
+  // Установка значения поля адреса
+
+  var mapPinMain = window.map.querySelector('.map__pin--main');
+
+  window.setAddressInputValue = function () {
+    var addressInput = window.adForm.querySelector('#address');
+
+    var addressX = mapPinMain.style.left.replace('px', '');
+    var addressY = mapPinMain.style.top.replace('px', '');
+
+    if (!window.setup.isPageActive) {
+      addressInput.value = (+addressX + window.pin.PIN_SIZE.width / 2) + ', ' + (+addressY + window.pin.PIN_SIZE.width / 2);
+    } else {
+      addressInput.value = (+addressX + window.pin.PIN_SIZE.width / 2) + ', ' + (+addressY + window.pin.PIN_SIZE.height);
+    }
+  };
+
+  var handleMapPinMain = function () {
+    window.setup.setPageActive();
+    window.setAddressInputValue();
+  }
+
+  mapPinMain.addEventListener('mousedown', function (evt) {
+    if (evt.button === 0) {
+      handleMapPinMain();
+    }
+  });
+
+  mapPinMain.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Enter') {
+      handleMapPinMain();
+    }
+  });
 
   // Валидация полей «Количество комнат» и «Количество мест»
 
@@ -105,7 +138,7 @@
   var timeOut = window.adForm.querySelector('#timeout');
   var timeOutOptions = window.adForm.querySelectorAll('#timeout option');
 
-  var setTimeIn = function (timeOutValue) {
+  var setTimeInOption = function (timeOutValue) {
     for (var option of timeInOptions) {
       if (option.value === timeOutValue) {
         option.selected = true;
@@ -113,7 +146,7 @@
     }
   };
 
-  var setTimeOut = function (timeInValue) {
+  var setTimeOutOption = function (timeInValue) {
     for (var option of timeOutOptions) {
       if (option.value === timeInValue) {
         option.selected = true;
@@ -122,10 +155,10 @@
   };
 
   timeIn.addEventListener('change', function (evt) {
-    setTimeOut(evt.target.value);
+    setTimeOutOption(evt.target.value);
   });
 
   timeOut.addEventListener('change', function (evt) {
-    setTimeIn(evt.target.value);
+    setTimeInOption(evt.target.value);
   });
 })();
