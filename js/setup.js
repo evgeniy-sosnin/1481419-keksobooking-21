@@ -44,7 +44,7 @@
       }
 
       var pinsList = document.querySelector('.map__pins');
-      pinsList.appendChild(adsFragment);
+      pinsList.appendChild(window.adsFragment);
 
       window.addPinsClickEnterHandler();
 

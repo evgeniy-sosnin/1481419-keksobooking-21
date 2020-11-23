@@ -24,7 +24,7 @@
   var handleMapPinMain = function () {
     window.setup.setPageActive();
     window.setAddressInputValue();
-  }
+  };
 
   mapPinMain.addEventListener('mousedown', function (evt) {
     if (evt.button === 0) {
