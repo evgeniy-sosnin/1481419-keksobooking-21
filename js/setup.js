@@ -3,48 +3,44 @@
 // Модуль активации/деактивации страницы
 
 (function () {
-
-  window.map = document.querySelector('.map');
-  window.mapFilters = window.map.querySelector('.map__filters-container');
-  window.mapFiltersForm = window.mapFilters.querySelector('.map__filters');
-
-  window.adsFragment = document.createDocumentFragment();
-
-  window.adForm = document.querySelector('.ad-form');
-  var adFormFieldsets = window.adForm.querySelectorAll('.ad-form fieldset');
-
   window.setup = {
+    map: document.querySelector('.map'),
+    mapFilters: document.querySelector('.map__filters-container'),
+    mapFiltersForm: document.querySelector('.map__filters'),
+    adsFragment: document.createDocumentFragment(),
+    adForm: document.querySelector('.ad-form'),
+    adFormFieldsets: document.querySelectorAll('.ad-form fieldset'),
     isPageActive: false,
     setPageInactive: function () {
-      window.map.classList.add('map--faded');
+      this.map.classList.add('map--faded');
 
-      window.adForm.classList.add('ad-form--disabled');
+      this.adForm.classList.add('ad-form--disabled');
 
-      for (var fieldset of adFormFieldsets) {
+      for (var fieldset of this.adFormFieldsets) {
         fieldset.disabled = true;
       }
 
-      for (var filter of window.mapFiltersForm.children) {
+      for (var filter of this.mapFiltersForm.children) {
         filter.disabled = true;
       }
 
       this.isPageActive = false;
     },
     setPageActive: function () {
-      window.map.classList.remove('map--faded');
+      this.map.classList.remove('map--faded');
 
-      window.adForm.classList.remove('ad-form--disabled');
+      this.adForm.classList.remove('ad-form--disabled');
 
-      for (var fieldset of adFormFieldsets) {
+      for (var fieldset of this.adFormFieldsets) {
         fieldset.disabled = false;
       }
 
-      for (var filter of window.mapFiltersForm.children) {
+      for (var filter of this.mapFiltersForm.children) {
         filter.disabled = false;
       }
 
       var pinsList = document.querySelector('.map__pins');
-      pinsList.appendChild(window.adsFragment);
+      pinsList.appendChild(this.adsFragment);
 
       window.addPinsClickEnterHandler();
 

@@ -9,7 +9,7 @@
   var mockAds = window.makeAdsArray();
 
   for (var i = 0; i < mockAds.length; i++) {
-    window.adsFragment.appendChild(window.pin.renderPin(mockAds[i]));
+    window.setup.adsFragment.appendChild(window.pin.renderPin(mockAds[i]));
   }
 
   // Открыть и закрыть карточку объявления
@@ -19,7 +19,7 @@
       if (targetPin.src.includes(ad.author.avatar)) {
         var mapCard = window.renderCard(ad);
         var mapCardClose = mapCard.querySelector('.popup__close');
-        window.map.insertBefore(mapCard, window.mapFilters);
+        window.setup.map.insertBefore(mapCard, window.setup.mapFilters);
 
         mapCardClose.addEventListener('click', function () {
           closeMapCardPopup();
@@ -31,16 +31,16 @@
   };
 
   var closeMapCardPopup = function () {
-    var mapCard = window.map.querySelector('.map__card');
+    var mapCard = window.setup.map.querySelector('.map__card');
     if (mapCard) {
-      window.map.removeChild(mapCard);
+      window.setup.map.removeChild(mapCard);
 
       document.removeEventListener('keydown', onMapCardPopupEscapePress);
     }
   };
 
   window.addPinsClickEnterHandler = function () {
-    var mapPins = window.map.querySelectorAll('.map__pin');
+    var mapPins = window.setup.map.querySelectorAll('.map__pin');
     for (var pin of mapPins) {
       if (!pin.classList.contains('map__pin--main')) {
         var targetElement;
@@ -51,9 +51,9 @@
             targetElement = evt.target;
           }
 
-          var mapCard = window.map.querySelector('.map__card');
+          var mapCard = window.setup.map.querySelector('.map__card');
           if (mapCard) {
-            window.map.removeChild(mapCard);
+            window.setup.map.removeChild(mapCard);
             openMapCardPopup(targetElement);
           } else {
             openMapCardPopup(targetElement);

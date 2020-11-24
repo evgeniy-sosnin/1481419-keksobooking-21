@@ -6,10 +6,10 @@
 
   // Установка значения поля адреса
 
-  var mapPinMain = window.map.querySelector('.map__pin--main');
+  var mapPinMain = window.setup.map.querySelector('.map__pin--main');
 
   window.setAddressInputValue = function () {
-    var addressInput = window.adForm.querySelector('#address');
+    var addressInput = window.setup.adForm.querySelector('#address');
 
     var addressX = mapPinMain.style.left.replace('px', '');
     var addressY = mapPinMain.style.top.replace('px', '');
@@ -40,10 +40,10 @@
 
   // Валидация полей «Количество комнат» и «Количество мест»
 
-  var roomNumberSelect = window.adForm.querySelector('#room_number');
+  var roomNumberSelect = window.setup.adForm.querySelector('#room_number');
 
   var setCapacityOptions = function (roomNumber) {
-    var capacitySelectOptions = window.adForm.querySelectorAll('#capacity option');
+    var capacitySelectOptions = window.setup.adForm.querySelectorAll('#capacity option');
 
     var resetCapacityOptions = function () {
       for (var capacitySelectOption of capacitySelectOptions) {
@@ -90,8 +90,8 @@
 
   // Валидация полей «Тип жилья» и «Цена за ночь»
 
-  var placeType = window.adForm.querySelector('#type');
-  var pricePerNight = window.adForm.querySelector('#price');
+  var placeType = window.setup.adForm.querySelector('#type');
+  var pricePerNight = window.setup.adForm.querySelector('#price');
 
   var minPrice;
   var maxPrice = 1000000;
@@ -132,11 +132,11 @@
 
   // Валидация полей «Время заезда и выезда»
 
-  var timeIn = window.adForm.querySelector('#timein');
-  var timeInOptions = window.adForm.querySelectorAll('#timein option');
+  var timeIn = window.setup.adForm.querySelector('#timein');
+  var timeInOptions = window.setup.adForm.querySelectorAll('#timein option');
 
-  var timeOut = window.adForm.querySelector('#timeout');
-  var timeOutOptions = window.adForm.querySelectorAll('#timeout option');
+  var timeOut = window.setup.adForm.querySelector('#timeout');
+  var timeOutOptions = window.setup.adForm.querySelectorAll('#timeout option');
 
   var setTimeInOption = function (timeOutValue) {
     for (var option of timeInOptions) {
